@@ -1,0 +1,23 @@
+apply plugin: 'kotlin-platform-native'
+
+configurations {
+    compilerPlugin
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+    expectedBy project(':common')
+}
+
+//def pluginPath = configurations.compilerPlugin.files.first().canonicalPath
+//def pluginArgument = '-Xplugin=' + pluginPath
+
+sourceSets {
+    main {
+        component {
+            targets = ['ios_x64', 'ios_arm32', 'ios_arm64']
+            outputKinds = [FRAMEWORK]
+            extraOpts '--disable', 'devirtualization', '-module_name', 'KT'//, pluginArgument
+        }
+    }
+}

@@ -1,2 +1,13 @@
-rootProject.name = 'multiplatform'
+rootProject.name = 'kotlin-multiplatform'
 
+include ':android'
+include ':ios'
+
+include ':backend'
+include ':web'
+
+include ':common'
+include ':common-js'
+include ':common-jvm'
+
+enableFeaturePreview('GRADLE_METADATA')

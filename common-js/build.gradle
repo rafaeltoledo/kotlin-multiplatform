@@ -1,0 +1,11 @@
+apply plugin: 'kotlin-platform-js'
+apply plugin: 'kotlinx-serialization'
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-js:$versions.kotlin"
+    compile "org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:$versions.serialization"
+
+    testCompile "org.jetbrains.kotlin:kotlin-test-js:$versions.kotlin"
+
+    expectedBy project(':common')
+}
