@@ -1,0 +1,16 @@
+apply plugin: 'kotlin-platform-jvm'
+apply plugin: 'kotlinx-serialization'
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"
+
+    testCompile 'junit:junit:4.12'
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
+    testCompile "org.jetbrains.kotlin:kotlin-test:$versions.kotlin"
+
+    expectedBy project(':common')
+}
+
+compileKotlin.kotlinOptions.jvmTarget = '1.8'
+
+compileTestKotlin.kotlinOptions.jvmTarget = '1.8'

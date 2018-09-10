@@ -20,6 +20,7 @@ subprojects {
             classpath "org.jetbrains.kotlinx:kotlinx-gradle-serialization-plugin:$versions.serialization"
             classpath 'org.jetbrains.kotlin:kotlin-native-gradle-plugin:0.9'
             classpath 'org.jetbrains.kotlin:kotlin-frontend-plugin:0.0.37'
+            classpath 'com.android.tools.build:gradle:3.3.0-alpha08'
         }
     }
 }

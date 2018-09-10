@@ -1,0 +1,31 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        applicationId 'net.rafaeltoledo.android'
+
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 1
+        versionName '1.0'
+    }
+
+    sourceSets.each {
+        it.java.srcDirs += "src/$it/kotlin"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.0.0-rc02'
+    
+    implementation project(':common-jvm')
+}
