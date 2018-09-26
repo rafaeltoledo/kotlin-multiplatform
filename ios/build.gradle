@@ -10,7 +10,7 @@ sourceSets {
         component {
             targets = ['ios_x64', 'ios_arm32', 'ios_arm64']
             outputKinds = [FRAMEWORK]
-            extraOpts '--disable', 'devirtualization', '-module_name', 'KT'//, pluginArgument
+            extraOpts '--disable', 'devirtualization', '-module_name', 'KT'
         }
     }
 }

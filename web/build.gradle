@@ -1,0 +1,37 @@
+apply plugin: 'org.jetbrains.kotlin.frontend'
+apply plugin: 'kotlin2js'
+apply plugin: 'kotlin-dce-js'
+
+kotlinFrontend {
+    downloadNodeJsVersion = '8.11.4'
+
+    npm {
+        dependency('webpack-cli', 'v3.1.0')
+        dependency('react', 'v16.4.2')
+        dependency('react-dom', 'v16.4.2')
+    }
+
+    sourceMaps = true
+
+    webpackBundle {
+        bundleName = 'main'
+        contentPath = file('src/main/web')
+        proxyUrl = 'http://localhost:8080'
+    }
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-js:$versions.kotlin"
+    compile 'org.jetbrains:kotlin-react-dom:16.4.2-pre.50-kotlin-1.2.61'
+
+    compile project(':common-js')
+}
+
+compileKotlin2Js.kotlinOptions {
+    metaInfo = true
+    outputFile = "$project.buildDir.path/js/${project.name}.js"
+    sourceMap = true
+    moduleKind = 'commonjs'
+    main = 'call'
+}
+
