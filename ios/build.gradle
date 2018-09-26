@@ -1,16 +1,9 @@
 apply plugin: 'kotlin-platform-native'
 
-configurations {
-    compilerPlugin
-}
-
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
     expectedBy project(':common')
 }
-
-//def pluginPath = configurations.compilerPlugin.files.first().canonicalPath
-//def pluginArgument = '-Xplugin=' + pluginPath
 
 sourceSets {
     main {
