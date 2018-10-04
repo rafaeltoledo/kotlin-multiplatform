@@ -1,8 +1,9 @@
 subprojects {
     buildscript {
         ext.versions = [
-                'kotlin'       : '1.3-M2',
-                'serialization': '0.7.0-eap-1',
+                'kotlin'       : '1.3.0-rc-146',
+                'serialization': '0.8.2-rc13',
+                'ktor'         : '0.9.6-alpha-1-rc13',
         ]
 
         repositories {
@@ -17,10 +18,10 @@ subprojects {
 
         dependencies {
             classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
-            classpath "org.jetbrains.kotlinx:kotlinx-gradle-serialization-plugin:$versions.serialization"
-            classpath 'org.jetbrains.kotlin:kotlin-native-gradle-plugin:0.9'
+            classpath "org.jetbrains.kotlin:kotlin-serialization:$versions.kotlin"
+            classpath "org.jetbrains.kotlin:kotlin-native-gradle-plugin:$versions.kotlin"
             classpath 'org.jetbrains.kotlin:kotlin-frontend-plugin:0.0.37'
-            classpath 'com.android.tools.build:gradle:3.3.0-alpha08'
+            classpath 'com.android.tools.build:gradle:3.3.0-alpha13'
         }
     }
 }
@@ -35,5 +36,21 @@ allprojects {
         mavenCentral()
         google()
         jcenter()
+    }
+
+    configurations.all {
+        resolutionStrategy {
+            eachDependency { details ->
+                if (details.requested.group == 'org.jetbrains.kotlin'
+                        && details.requested.name.endsWith('jre8')) {
+                    details.requested.name = 'kotlin-stdlib-jdk8'
+                }
+
+                if (details.requested.group == 'org.jetbrains.kotlin'
+                        && details.requested.name.endsWith('jre7')) {
+                    details.requested.name = 'kotlin-stdlib-jdk7'
+                }
+            }
+        }
     }
 }

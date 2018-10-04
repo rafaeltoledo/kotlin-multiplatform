@@ -1,0 +1,17 @@
+apply plugin: 'java'
+apply plugin: 'kotlin'
+apply plugin: 'application'
+
+mainClassName = 'net.rafaeltoledo.backend.MainKt'
+
+sourceCompatibility = 1.8
+compileKotlin.kotlinOptions.jvmTarget = '1.8'
+compileTestKotlin.kotlinOptions.jvmTarget = '1.8'
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"
+    compile "io.ktor:ktor-server-netty:$versions.ktor"
+    compile 'ch.qos.logback:logback-classic:1.2.3'
+    
+    testCompile 'junit:junit:4.12'
+}
