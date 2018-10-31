@@ -3,12 +3,12 @@ apply plugin: 'kotlin2js'
 apply plugin: 'kotlin-dce-js'
 
 kotlinFrontend {
-    downloadNodeJsVersion = '8.11.4'
+    downloadNodeJsVersion = '10.13.0'
 
     npm {
-        dependency('webpack-cli', 'v3.1.0')
-        dependency('react', 'v16.4.2')
-        dependency('react-dom', 'v16.4.2')
+        dependency('webpack-cli', 'v3.1.2')
+        dependency('react', "v$versions.react")
+        dependency('react-dom', "v$versions.react")
     }
 
     sourceMaps = true
@@ -22,7 +22,7 @@ kotlinFrontend {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-js:$versions.kotlin"
-    compile 'org.jetbrains:kotlin-react-dom:16.4.2-pre.50-kotlin-1.2.61'
+    compile "org.jetbrains:kotlin-react-dom:$versions.react-pre.58-kotlin-$versions.kotlin"
 
     compile project(':common-js')
 }
